@@ -1,3 +1,8 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .App {
   text-align: center;
 }
@@ -35,4 +40,15 @@
   to {
     transform: rotate(360deg);
   }
+}
+.main-container{
+  display: flex;
+  width: 100%;
+}
+.left{
+  width: 15%;
+}
+.right{
+  width: 80%;
+  margin-left: 10%;
 }
