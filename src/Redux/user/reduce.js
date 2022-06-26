@@ -14,6 +14,7 @@ export const userReducer = (store = init, { type, payload }) => {
         ...store,
         user: payload,
         isAuth: true,
+        
       };
 
     case ADD_TOKEN:

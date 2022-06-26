@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Register.css";
 const Register = () => {
+  const navigate = useNavigate()
   const [registerData, setRegisterData] = useState([]);
   const handleRegister = (e) => {
     setRegisterData({
@@ -21,7 +22,9 @@ const Register = () => {
     if (res.error === false) {
       alert(res.message);
     } else {
+      
       alert(res.message);
+      navigate("/login")
     }
   };
   return (
