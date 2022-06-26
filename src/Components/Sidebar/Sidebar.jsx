@@ -1,39 +1,78 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { logOutUser } from "../../Redux/user/action";
 import "./Sidebar.css";
 const Sidebar = () => {
-    var token = JSON.parse(localStorage.getItem("token"));
-    var tokenAuth = localStorage.getItem("tokenauthor");
-
-      const user = useSelector((state) => state.user);
-      const dispatch = useDispatch();
-      console.log("--", tokenAuth);
+  const navigate = useNavigate();
+  var token = JSON.parse(localStorage.getItem("token"));
+  var tokenAuth = localStorage.getItem("tokenauthor");
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const handleLoginLogout = () => {
+    console.log("clicked");
+    console.log(token);
+    if (token !== null) {
+      console.log("clicked");
+      localStorage.removeItem("token");
+      localStorage.removeItem("tokenauthor");
+      dispatch(logOutUser());
+    } else {
+      navigate("/login");
+    }
+  };
   return (
     <div className="sidebar">
       <div className="user-details">
         <h2>Hello {token !== null ? tokenAuth : "user"} </h2>
-        <Link to={"/login"}>Login</Link>
-        <Link to={"/signup"}>Register</Link>
+     
       </div>
       <div className="main-nav">
-        <button>All</button>
-        <button>Personal</button>
-        <button>officilals</button>
-        <button>Othors</button>
-      </div>
-      <div className="logout-sec">
         <button
           onClick={() => {
-            console.log("clicked");
-            localStorage.removeItem("token");
-            localStorage.removeItem("tokenauthor");
-            dispatch(logOutUser());
+            navigate("/");
           }}
         >
-          {token !== null ? "LOGOUT" : "LOGIN"}
+          All
         </button>
+        <button
+          onClick={() => {
+            navigate("/personaltodo");
+          }}
+        >
+          Personal
+        </button>
+        <button
+          onClick={() => {
+            navigate("/officialtodo");
+          }}
+        >
+          officilals
+        </button>
+        <button
+          onClick={() => {
+            navigate("/personaltodo");
+          }}
+        >
+          profesional
+        </button>
+        <button
+          onClick={() => {
+            navigate("/othortodo");
+          }}
+        >
+          Othors
+        </button>
+        <button
+          onClick={() => {
+            navigate("/createtodo");
+          }}
+        >
+          Add Todo
+        </button>
+      </div>
+      <div className="logout-sec">
+        <button onClick={handleLoginLogout}>{token !== null ? "LOGOUT" : "LOGIN"}</button>
       </div>
     </div>
   );

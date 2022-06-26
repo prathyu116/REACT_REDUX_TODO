@@ -1,13 +1,13 @@
-import { ADD_TOKEN, ADD_USER, LOGOUT_USER } from "./action";
+import { ADD_TOKEN, ADD_USER, IS_LOADING, LOGOUT_USER } from "./action";
 
 const init = {
   user: "",
   token: "",
   isAuth: false,
+  loading: false,
 };
 
 export const userReducer = (store = init, { type, payload }) => {
-
   switch (type) {
     case ADD_USER:
       return {
@@ -26,6 +26,8 @@ export const userReducer = (store = init, { type, payload }) => {
         ...store,
         isAuth: false,
       };
+    case IS_LOADING:
+      return { ...store, loading: true };
 
     default:
       return store;
