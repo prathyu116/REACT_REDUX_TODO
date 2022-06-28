@@ -35,6 +35,7 @@ const AddTodo = () => {
        .then(() => {
          dispatch(getTodos());
         alert("TASK ADDED")
+        window.location.reload()
               
 
        })

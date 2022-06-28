@@ -7,13 +7,29 @@ const AllTodo = () => {
     const dispatch = useDispatch();
 
     const state = useSelector((store) => store.todo.todos);
-    console.log(state.task);
+    console.log("dd",state);
      useEffect(() => {
        dispatch(getTodos());
      }, []);
 
+     var personal = state.filter((itm)=>{
+      return itm.type.personal === true;
+     })
+     var official = state.filter((itm)=>{
+      return itm.type.official === true;
+     })
+     var othors = state.filter((itm) => {
+       return itm.type.othors === true;
+     });
+     
+
   return (
-    <h3>AllTodo</h3>
+    <div>
+      <div className="all-todo">
+
+      </div>
+      
+    </div>
   )
 }
 

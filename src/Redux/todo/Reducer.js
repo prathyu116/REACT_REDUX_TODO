@@ -5,7 +5,7 @@ export const TodoReducer = (store = init, { type, payload }) => {
   console.log("sss",payload);
   switch (type) {
     case ADD_TODO:
-      return { ...store, todos: [...store.todos, payload] };
+      return { ...store, todos: [...store.todos,... payload] };
     case SORT:
       return { ...store, todos: [...store.todos].sort((a, b) => (a[payload] > b[payload] ? 1 : b[payload] > a[payload] ? -1 : 0)) };
     case DELETE_TODO:
