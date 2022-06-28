@@ -25,35 +25,30 @@ const AddTodo = () => {
       type: checkboxData,
     };
     // dispatch(addTodo(payload));
-     fetch("http://localhost:8080/todos", {
-       body: JSON.stringify(payload),
-       headers: {
-         "content-type": "application/json",
-       },
-       method: "POST",
-     })
-       .then(() => {
-         dispatch(getTodos());
-        alert("TASK ADDED")
-        window.location.reload()
-              
-
-       })
-       .then(() => {
+    fetch("http://localhost:8080/todos", {
+      body: JSON.stringify(payload),
+      headers: {
+        "content-type": "application/json",
+      },
+      method: "POST",
+    })
+      .then(() => {
+        dispatch(getTodos());
+        alert("TASK ADDED");
+        window.location.reload();
+      })
+      .then(() => {
         setText("");
-       });
-
+      });
   };
   const handleAddSubtask = () => {
-    
     setSubTask([...subTask, { id: Date.now(), title: text, status: false }]);
-
   };
   const handleChangeTags = (e) => {
     const { name, checked } = e.target;
     setcheckboxData({ ...checkboxData, [name]: checked });
   };
-    console.log(subTask);
+  console.log(subTask);
 
   return (
     <>
@@ -112,17 +107,15 @@ const AddTodo = () => {
             <input type="text" name="" id="" placeholder="add sub task" onChange={(e) => setText(e.target.value)} />
             <button onClick={handleAddSubtask}>Add</button>
           </div>
-          <div >
-            {
-              subTask.map((itm)=>{
-                return (
-                  <div style={{ display: "flex", gap: "10px", marginBottom: "10px" }}>
-                    <li>{itm.title}</li>
-                    <button>Del</button>
-                  </div>
-                );
-              })
-            }
+          <div>
+            {subTask.map((itm) => {
+              return (
+                <div style={{ display: "flex", gap: "10px", marginBottom: "10px" }}>
+                  <li>{itm.title}</li>
+                  <button>Del</button>
+                </div>
+              );
+            })}
           </div>
         </div>
         <div className="third">
