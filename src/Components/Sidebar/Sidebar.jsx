@@ -49,13 +49,7 @@ const Sidebar = () => {
         >
           officilals
         </button>
-        <button
-          onClick={() => {
-            navigate("/personaltodo");
-          }}
-        >
-          profesional
-        </button>
+        
         <button
           onClick={() => {
             navigate("/othortodo");

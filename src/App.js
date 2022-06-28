@@ -22,7 +22,6 @@ function App() {
           <Route path="/" element={<AllTodo />} />
           <Route path="/signup" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/profsionaltodo" element={<ProfessionalTodo />} />
           <Route path="/personaltodo" element={<PersonalTodo />} />
           <Route path="/othortodo" element={<OthorsTodo />} />
           <Route path="/officialtodo" element={<OfficalTodo />} />
